@@ -10,7 +10,7 @@ Les violences sexuelles désignent tous les actes sexuels commis avec violence, 
 
 ## Question de recherche
 
-Les violences conjugales ont augmentées pendant le confinement en France.
+Les violences conjugales ont augmentées pendant le confinement en France, puisque 80% d'entre elles se produisaient à l'intérieur du domicile. On aimerait savoir ce qu'il en ai des violences sexuelles de manière général. Ainsi, le projet vise à répondre à la question suivante :
 
 - Comment les violences sexuelles reportées ont évoluées pendant les périodes de confinements français ?
 
