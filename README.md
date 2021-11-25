@@ -29,4 +29,4 @@ Les évènements sont agrégés par mois de l'année, et couvrent janvier 2000 �
 
 ## Méthode
 
-Le projet contribue à automatiser le traitement des données pour les années à venir (dimensions d'automatisation).
+Le projet apporte une contribution dans le traitement des données, puisqu'il comporte une dimension d'automatisation, qui permettra notamment un gain de temps pour les données des années à venir. Cette automatisation du traitement de données consiste en la préparation d'un flux de traitement sur Tableau Prep. Ce flux peut ensuite être appliqué aux bases de données qui ont la même structure que les données brutes (fichier data).
