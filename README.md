@@ -1,32 +1,30 @@
-# Les violences sexuelles en France.
-Ce répertoire contient le projet d'analyse de l'ampleur du phénomène des violences sexuelles qui se produisent en France.
+# AMPLEUR ET DÉVELOPPEMENT DES VIOLENCES SEXUELLES EN FRANCE
+Ce répertoire contient le projet d'analyse du phénomène des violences sexuelles en France, effectué dans le cadre du cours de pratique avancée en analyse criminelle.
 
 ## Abstract
 
-« La lutte contre toutes les violences faites aux femmes est un combat culturel et un enjeu de civilisation. » (Emmanuel Macron, 2017) 
-
-En France, la lutte contre les violences sexistes et sexuelles fait l’objet d’un engagement continu à la fois de la part du gouvernement et des associations.
-Les violences sexuelles désignent tous les actes sexuels commis avec violence, menace, contrainte ou surprise. Elles constituent une atteinte à l'intégrité physique des personnes et sont, de ce fait, punies par la loi (Titre II, chapitre II du Code Pénal). 
+__Résumé__ – Les violences sexuelles représente un enjeu en matière d’action de sécurité. À partir d’un jeu de données des infractions enregistrées par la police et la gendarmerie française, le but du projet est d’étudier  l’ampleur et l’évolution de ces violences en France. L’étude est menée selon la méthode d’analyse criminelle stratégique.
 
 ## Question de recherche
 
-Les violences conjugales ont augmentées pendant le confinement en France, puisque 80% d'entre elles se produisaient à l'intérieur du domicile. On aimerait savoir ce qu'il en ai des violences sexuelles de manière général. Ainsi, le projet vise à répondre à la question suivante :
-
-- Comment les violences sexuelles reportées ont évoluées pendant les périodes de confinements français ?
+Pour étudier la problématique des violences sexuelles en France, la présente étude est guidée par les questions suivantes : 
+1. Comment évoluent les violences sexuelles depuis 2000 ? 
+2. Comment évoluent les violences sexuelles pendant la pandémie de Covid 19 ?
+3. Existe-t-il des tendances saisonnières pour les viols ?
+4. Quelles prévisions peut-on faire sur le nombre de viols après la pandémie ?
 
 ## Base de données
 
-Le projet se base sur les infractions sur les crimes et délits enregistrés par les services de gendarmerie et de police françaises. Les données, sous format Excel, sont accessibles en ligne sur le site data.gouv.fr, la plateforme ouverte des données publiques françaises.
+Le projet se base sur les infractions sur les crimes et délits enregistrés par les services de gendarmerie et de police françaises. Les données sont accessibles en ligne sur le site du gouvernement français.
 
-Le set de données recense tous les types de crimes et délits, elle n'est pas spécifique aux crimes et délits sexuels. Les infractions correspondantes aux violences sexuelles sont les suivantes : 
--	viols sur des majeur(e)s
--	viols sur des mineur(e)s
--	harcèlements sexuels et autres agressions sexuelles contre des majeur(e)s
--	harcèlements sexuels et autres agressions sexuelles contre des mineur(e)s
--	atteintes sexuelles
+La base de données recense le nombre d’infractions enregistrées mensuellement depuis janvier 2000 jusqu’à septembre 2021, par type d’infraction (N = 104). Les index 46 à 50 concernent les infractions de violences sexuelles :
+-	46. Viols sur des majeur(e)s
+-	47. Viols sur des mineur(e)s
+-	48. Harcèlements sexuels et autres agressions sexuelles contre des majeur(e)s
+-	49. Harcèlements sexuels et autres agressions sexuelles contre des mineur(e)s
+-	50. Atteintes sexuelles
 
-Les évènements sont agrégés par mois de l'année, et couvrent janvier 2000 à septembre 2021. 
 
 ## Méthode
 
-Le projet apporte une contribution dans le traitement des données, puisqu'il comporte une dimension d'automatisation, qui permettra notamment un gain de temps pour les données des années à venir. Cette automatisation du traitement de données consiste en la préparation d'un flux de traitement sur Tableau Prep. Ce flux peut ensuite être appliqué aux bases de données qui ont la même structure que les données brutes (fichier data).
+La méthode d’analyse criminelle stratégique est appliquée dans le cadre de cette étude. Une série d’analyses temporelles est effectuée pour détecter des tendances, des changements, des anomalies ou des composants saisonniers. Pour identifier la relation entre le temps et le nombre de cas enregistrés, et ainsi vérifier la signification statistique des hypothèses avancées, les visualisations sont complétées par une analyse statistique se basant sur un modèle de régression linéaire. Les données exploitées sont finalement interprétées pour formuler et discuter des hypothèses permettant de répondre aux questions posées. 
