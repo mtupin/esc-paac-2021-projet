@@ -1,0 +1,229 @@
+---------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/Tupin/Documents/UnilMsc/Msc2_I/PAAC/Projet/esc-paac-2021-projet/generated/Stata/regression.log
+  log type:  text
+ opened on:  29 Dec 2021, 16:30:35
+
+. do "/Users/Tupin/Documents/UnilMsc/Msc2_I/PAAC/Projet/esc-paac-2021-projet/generated/Stata/PAAC.do"
+
+. cd /Users/Tupin/Documents/UnilMsc/Msc2_I/PAAC/Projet/esc-paac-2021-projet/generated/Stata
+/Users/Tupin/Documents/UnilMsc/Msc2_I/PAAC/Projet/esc-paac-2021-projet/generated/Stata
+
+. 
+. //Importer l'Excel
+. import excel data_stata.xlsx , firstrow clear
+(9 vars, 261 obs)
+
+. 
+. // Renommer les variables
+. rename Année_mois am
+
+. rename Violssurdesmajeures viol_maj
+
+. rename Violssurdesmineures viol_min
+
+. rename Harcèlementssexuelsetautresa har_maj
+
+. rename F har_min
+
+. rename Atteintessexuelles atteintes_sex
+
+. rename Année year
+
+. rename Mois month
+
+. 
+. //Trier les dates dans l'ordre croissant
+. sort am
+
+. //browse
+. 
+. //Définir des dates sous la forme année - mois 
+. gen date = tm(2000m1)+ _n-1  
+
+. format %tm date              //show date in quarter format
+
+. tsset date                   //define date as time serie
+
+Time variable: date, 2000m1 to 2021m9
+        Delta: 1 month
+
+. browse
+
+. 
+. 
+. //Régressions
+. regress viol_maj date
+
+      Source |       SS           df       MS      Number of obs   =       261
+-------------+----------------------------------   F(1, 259)       =    485.91
+       Model |  12691271.7         1  12691271.7   Prob > F        =    0.0000
+    Residual |  6764684.92       259  26118.4746   R-squared       =    0.6523
+-------------+----------------------------------   Adj R-squared   =    0.6510
+       Total |  19455956.6       260  74830.6023   Root MSE        =    161.61
+
+------------------------------------------------------------------------------
+    viol_maj | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        date |    2.92675   .1327721    22.04   0.000       2.6653      3.1882
+       _cons |  -1241.635   81.60646   -15.21   0.000    -1402.332   -1080.939
+------------------------------------------------------------------------------
+
+. estadd ysumm
+
+added scalars:
+                e(ysd) =  273.55183
+               e(ymax) =  1622
+               e(ymin) =  230
+              e(ymean) =  543.68199
+
+. eststo res1
+
+. 
+. regress viol_min date
+
+      Source |       SS           df       MS      Number of obs   =       261
+-------------+----------------------------------   F(1, 259)       =    270.28
+       Model |  8582266.25         1  8582266.25   Prob > F        =    0.0000
+    Residual |  8224234.44       259  31753.8009   R-squared       =    0.5107
+-------------+----------------------------------   Adj R-squared   =    0.5088
+       Total |  16806500.7       260  64640.3873   Root MSE        =     178.2
+
+------------------------------------------------------------------------------
+    viol_min | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        date |   2.406767   .1463966    16.44   0.000     2.118488    2.695046
+       _cons |  -832.1623   89.98051    -9.25   0.000    -1009.349   -654.9758
+------------------------------------------------------------------------------
+
+. estadd ysumm
+
+added scalars:
+                e(ysd) =  254.24474
+               e(ymax) =  1790
+               e(ymin) =  353
+              e(ymean) =  635.96552
+
+. eststo res2
+
+. 
+. regress har_maj date
+
+      Source |       SS           df       MS      Number of obs   =       261
+-------------+----------------------------------   F(1, 259)       =    556.27
+       Model |  15269379.2         1  15269379.2   Prob > F        =    0.0000
+    Residual |  7109396.82       259  27449.4086   R-squared       =    0.6823
+-------------+----------------------------------   Adj R-squared   =    0.6811
+       Total |    22378776       260  86072.2153   Root MSE        =    165.68
+
+------------------------------------------------------------------------------
+     har_maj | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        date |   3.210286    .136113    23.59   0.000     2.942257    3.478315
+       _cons |  -1336.489   83.65986   -15.98   0.000    -1501.229   -1171.749
+------------------------------------------------------------------------------
+
+. estadd ysumm
+
+added scalars:
+                e(ysd) =  293.38067
+               e(ymax) =  1590
+               e(ymin) =  321
+              e(ymean) =  621.78544
+
+. eststo res3
+
+. 
+. regress har_min date
+
+      Source |       SS           df       MS      Number of obs   =       261
+-------------+----------------------------------   F(1, 259)       =    243.51
+       Model |  15854555.7         1  15854555.7   Prob > F        =    0.0000
+    Residual |  16863185.3       259  65108.8235   R-squared       =    0.4846
+-------------+----------------------------------   Adj R-squared   =    0.4826
+       Total |    32717741       260  125837.465   Root MSE        =    255.16
+
+------------------------------------------------------------------------------
+     har_min | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        date |   3.271223   .2096298    15.60   0.000     2.858427    3.684018
+       _cons |  -994.3576   128.8459    -7.72   0.000    -1248.076   -740.6387
+------------------------------------------------------------------------------
+
+. estadd ysumm
+
+added scalars:
+                e(ysd) =  354.73577
+               e(ymax) =  2564
+               e(ymin) =  539
+              e(ymean) =  1001.0881
+
+. eststo res4
+
+. 
+. regress atteintes_sex date
+
+      Source |       SS           df       MS      Number of obs   =       261
+-------------+----------------------------------   F(1, 259)       =      5.71
+       Model |  251198.415         1  251198.415   Prob > F        =    0.0176
+    Residual |  11393825.4       259   43991.604   R-squared       =    0.0216
+-------------+----------------------------------   Adj R-squared   =    0.0178
+       Total |  11645023.9       260  44788.5533   Root MSE        =    209.74
+
+------------------------------------------------------------------------------
+atteintes_~x | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        date |   .4117575    .172313     2.39   0.018     .0724447    .7510702
+       _cons |   960.8049   105.9096     9.07   0.000     752.2513    1169.359
+------------------------------------------------------------------------------
+
+. estadd ysumm
+
+added scalars:
+                e(ysd) =  211.63306
+               e(ymax) =  1725
+               e(ymin) =  662
+              e(ymean) =  1211.977
+
+. eststo res5
+
+. 
+. //écriture dans un fichier LaTeX pour la mise en forme sur Overleaf
+. esttab res1 using table1.tex , tex replace b(3) se(3) starlevels(* 0.1 ** 0.05 *** 0.01) nomtitle ///
+>  stat(N r2_a ymean ysd, fmt(0 3 2 2) label("Nr. obs." "Adj. R2" "Mean (dep. var.)" "SD (dep. var.)")) ///
+>  coeflabel(viol_maj "Viols sur majeur(e)s" date "Date")
+(output written to table1.tex)
+
+.  
+. esttab res2 using table2.tex , tex replace b(3) se(3) starlevels(* 0.1 ** 0.05 *** 0.01) nomtitle ///
+>  stat(N r2_a ymean ysd, fmt(0 3 2 2) label("Nr. obs." "Adj. R2" "Mean (dep. var.)" "SD (dep. var.)")) ///
+>  coeflabel(viol_maj "Viols sur majeur(e)s" date "Date")
+(output written to table2.tex)
+
+. 
+. esttab res3 using table3.tex , tex replace b(3) se(3) starlevels(* 0.1 ** 0.05 *** 0.01) nomtitle ///
+>  stat(N r2_a ymean ysd, fmt(0 3 2 2) label("Nr. obs." "Adj. R2" "Mean (dep. var.)" "SD (dep. var.)")) ///
+>  coeflabel(viol_maj "Viols sur majeur(e)s" date "Date")
+(output written to table3.tex)
+
+. 
+.  esttab res4 using table4.tex , tex replace b(3) se(3) starlevels(* 0.1 ** 0.05 *** 0.01) nomtitle ///
+>  stat(N r2_a ymean ysd, fmt(0 3 2 2) label("Nr. obs." "Adj. R2" "Mean (dep. var.)" "SD (dep. var.)")) ///
+>  coeflabel(viol_maj "Viols sur majeur(e)s" date "Date")
+(output written to table4.tex)
+
+.  
+.  esttab res5 using table5.tex , tex replace b(3) se(3) starlevels(* 0.1 ** 0.05 *** 0.01) nomtitle ///
+>  stat(N r2_a ymean ysd, fmt(0 3 2 2) label("Nr. obs." "Adj. R2" "Mean (dep. var.)" "SD (dep. var.)")) ///
+>  coeflabel(viol_maj "Viols sur majeur(e)s" date "Date")
+(output written to table5.tex)
+
+. 
+end of do-file
+
+. log close
+      name:  <unnamed>
+       log:  /Users/Tupin/Documents/UnilMsc/Msc2_I/PAAC/Projet/esc-paac-2021-projet/generated/Stata/regression.log
+  log type:  text
+ closed on:  29 Dec 2021, 16:30:59
+---------------------------------------------------------------------------------------------------------------------------------------
